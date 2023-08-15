@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<PlanilhasCollection>
+  <Planilhas>
+    <Planilha Id="1" Titulo="Acerto Produto Modalidade" Ativo="1"
+              ProcedureValidacao="SPDDP_VALIDA_PRODUTO_MODALIDADE"
+              ProcedureAlteracao="SPDDP_ATUALIZA_PRODUTO_MODALIDADE">
+      <Colunas>
+        <Coluna HeaderColuna="Data-Base"
+                NomeCampo="DT_BASE" TipoCampo="data" TamanhoCampo="10" ColunaChave="1" />
+        <Coluna HeaderColuna="ID_Empresa"
+                NomeCampo="ID_EMPRESA" TipoCampo="numerico" TamanhoCampo="11" ColunaChave="1" />
+        <Coluna HeaderColuna="Contrato"
+                NomeCampo="CD_CONTRATO" TipoCampo="texto" TamanhoCampo="20" ColunaChave="1" />
+        <Coluna HeaderColuna="Produto Novo"
+                NomeCampo="CD_PRODUTO_NOVO" TipoCampo="texto" TamanhoCampo="15" ColunaChave="0" />
+        <Coluna HeaderColuna="Modalidade Nova"
+                NomeCampo="CD_MODALIDADE_NOVA" TipoCampo="texto" TamanhoCampo="10" ColunaChave="0" />
+        <Coluna HeaderColuna="COSIF Novo"
+                NomeCampo="CD_COSIF_NOVO" TipoCampo="texto" TamanhoCampo="8" ColunaChave="0" />
+        <Coluna HeaderColuna="Produto Original"
+                NomeCampo="CD_PRODUTO_ORIGINAL" TipoCampo="texto" TamanhoCampo="15" ColunaChave="1" />
+        <Coluna HeaderColuna="Modalidade Original"
+                NomeCampo="CD_MODALIDADE_ORIGINAL" TipoCampo="texto" TamanhoCampo="10" ColunaChave="1" />
+      </Colunas>
+    </Planilha>
+  </Planilhas>
+</PlanilhasCollection>

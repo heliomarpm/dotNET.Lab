@@ -1,0 +1,33 @@
+﻿Artigo: http://imasters.com.br/artigo/21642/dotnet/o-padrao-de-projeto-mediator-na-pratica
+
+O exemplo a seguir demonstra a utilização do padrão Mediator para facilitar a comunicação usando o 
+baixo acoplamento entre os diferentes participantes de um Chat. 
+
+Este exemplo foi adaptado de original encontrado em 
+Mediator Design Pattern in C# and VB.NET (http://www.dofactory.com/Patterns/PatternMediator.aspx).
+--------------------------------------------------------------------------------------------------------
+
+Participantes (Classes)
+
+ * Mediator: define uma interface para comunicação com os objetos Colleague; 
+ * ConcreteMediator: conhece as classes Colleague e mantém uma referência aos objetos Colleague. Ele implementa a comunicação e a transferência de mensagens entre as classes Colleague; 
+ * Classes Colleague: mantêm uma referência ao seu objeto Mediator - se comunicam com o Mediator sempre que necessário. De outra forma, se comunicam com um Colleague. 
+
+Vantagens
+
+ * Desacoplamento entre os diversos participantes da rede de comunicação (participantes não se conhecem); 
+ * Eliminação de relacionamentos muitos para muitos (são todos substituídos por relacionamentos um para muitos); 
+ * A política de comunicações está centralizada no mediador e pode ser alterada sem mexer nos colaboradores. 
+
+Desvantagens
+
+ * A centralização pode ser uma fonte de gargalos de desempenho e de risco para o sistema em caso de falha; 
+ * Na prática, os mediadores tendem a se tornar mais complexos. 
+
+(Fonte: 2003, Helder L. S da Rocha)
+
+Padrões Relacionados
+
+ 1 - Facade: Um mediator simplificado torna-se um padrão Facade se o mediador for a única classe ativa e se as classes Colleagues forem classes passivas; 
+ 2 - Adapter: O padrão Mediator apenas media os pedidos entre as classes Colleague; 
+ 3 - Observer: Os padrões Mediator e Observer são semelhantes, resolvendo o mesmo problema. 

@@ -1,0 +1,19 @@
+﻿Definição: 
+	
+	É o pattern que diminui o consumo de memória ao compartilhar dados entre objetos similares. 
+	Normalmente é usado com coleções pequenas de objetos.
+
+
+Quando usar: 
+	
+	Quando você tem muitos objetos em memória; 
+	Quando você pode compartilhar estado entre objetos; 
+	Quando você quer economizar memória. 
+
+
+Como usar:
+
+	Criar as classes Flyweight, que implementam IFlyweight; 
+	Criar uma class FlyweightFactory, que possui uma coleção de IFlyweight; 
+	Implementar as operações (Operation); 
+	Criar um construtor que inicialize a coleção de IFlyweight. 

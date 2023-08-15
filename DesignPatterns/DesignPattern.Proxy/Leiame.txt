@@ -1,0 +1,19 @@
+﻿Definição: 
+
+	É um padrão que nos permite encapsular a instância de uma classe complexa usando 
+	uma instância de outra classe que possui a mesma interface. 
+	Com isso podemos controlar a criação e acesso aos objetos complexos usando objetos mais simples.
+
+
+Quando usar: 
+
+	Quando temos uma classe que possua dados sensíveis (que deveriam ser de acesso restrito); 
+	Quando temos uma classe que acessa objetos remotos; 
+	Quando temos uma classe em que a criação do objeto é muito demorada. 
+	
+
+Como usar:
+
+	Criar uma classe Proxy que implemente ISubject; 
+	Adicionar um campo privado do tipo Subject; 
+	Implementar ISubject (Request) de forma que ele chame o método correspondente (Request) da classe Subject (que NÃO herda de ISubject).  

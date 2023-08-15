@@ -1,0 +1,17 @@
+﻿Definição: 
+
+	É um padrão que cria uma interface simples, de alto nível, para interfaces complexas. 
+	Com isso a visão do usuário é de que a operação é simples, quando - na verdade - não o é.
+
+Quando usar: 
+
+	Quando você tem uma biblioteca definida e apartada da aplicação client e não quer que a mesma acesse recursos específicos dentro dela; 
+	Quando você precisa simplificar uma sequência de passos mais complexa; 
+	Quando você quer ter diferentes interfaces com o usuário; 
+	Quando você precisa de um novo ponto de acesso a um recurso de um software em camadas. 
+
+Como usar:
+
+	Criar uma classe static Facade; 
+	Criar campos estáticos do tipo de cada Subsystem de Library; 
+	Implementar as operações (Operation1, Operation2) de modo que ele execute métodos dos subsistemas (SubsystemA, SubsystemB e SubsystemC). 

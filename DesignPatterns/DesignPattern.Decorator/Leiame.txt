@@ -1,0 +1,24 @@
+Definição: 
+
+	É um padrão que nos permite estender (decorar) dinamicamente as características de uma classe qualquer. 
+	Por características entendemos estado (state: campos e propriedades - propriedades somente em .Net) ou comportamento (behavior: métodos).
+
+	É uma alternativa à herança e tem uma diferença importante (e que torna o seu uso mais flexível) em relação àquela:
+
+	herança é definida em tempo de compilação; 
+	uma classe decorada é definida em tempo de execução. 
+
+Quando usar: 
+
+	Quando temos uma classe que não queremos herdar; 
+	Quando temos uma classe que não pode ser herdada por ser final - em java -, sealed - em C# - ou NotInheritable - em VB.Net; 
+	Quando temos uma classe que não pode ser herdada por estarmos herdando de uma outra classe qualquer. 
+
+
+Como usar:
+
+	Criar uma classe Decorator que implemente IComponent; 
+	Adicionar um campo privado do tipo IComponent; 
+	Adicionar um construtor que receba um IComponent e o atribua ao campo privado; 
+	Implementar IComponent (Operation) de acordo com a sua necessidade; 
+	Criar novos métodos (AddedBehavior) e/ou campos (addedState) e/ou propriedades (addedState) de acordo com a sua necessidade. 

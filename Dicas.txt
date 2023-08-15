@@ -1,0 +1,154 @@
+Uma necessidade que temos, de vez em quando, é: a partir de uma URL, gravar todas as imagens que existem nesse endereço.
+
+Criei uma classe chamada Extrator. Para usá-la, basta criar uma instância passando a URL e executar o método ExtrairImagens(). 
+Todas as imagens da página serão salvas em disco.
+
+Solução:
+
+using System;
+using System.Diagnostics;
+
+namespace ExtrairImagensDaPagina 
+{    
+    class Program    
+    {        
+        static void Main(string[] args)        
+        {            
+            new Extrator("http://50minutos.com.br/blog").ExtrairImagens();
+
+            Process.Start(Environment.CurrentDirectory);        
+        }    
+    }
+}
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Net;
+using System.IO;
+using System.Text.RegularExpressions;
+
+namespace ExtrairImagensDaPagina
+{    
+    class Extrator    
+    {        
+        private String url;
+
+        public Extrator(String url)        
+        {            
+            this.url = url.ToLower().StartsWith("http") ? url : String.Format("http://{0}", url.ToLower());        
+        }
+
+        private List<String> ExtrairNomes()        
+        {            
+            string resposta = null;            
+            string fonteDaPagina = ASCIIEncoding.ASCII.GetString(Baixar(url, out resposta));
+            url = resposta != null ? resposta : null;
+
+            return Quebrar(url, fonteDaPagina);        
+        }
+
+        private List<string> Quebrar(String url, String fonteDaPagina)        
+        {            
+            List<String> imagens = new List<String>();            
+            Regex regex = new Regex(@"(?<=img.*src=[""'])\S*(?=[""'])\b");
+            try            
+            {                
+                foreach (var item in regex.Matches(fonteDaPagina))                    
+                    imagens.Add(Montar(url, item.ToString()));            
+            }            
+            catch { }
+
+            return imagens;        
+        }
+
+        private String Montar(string url, string p)        
+        {            
+            if (!p.StartsWith("http"))            
+            {                
+                int fim = url.IndexOf('/', url.IndexOf("://") + 3);
+
+                if (fim != -1)                    
+                    p = url.Substring(0, fim) + (p.StartsWith("/") ? "" : "/") + p;           
+            }
+
+            return p;        
+        }
+
+        private byte[] Baixar(string url, out string resposta)
+        {           
+            byte[] bytes = new byte[0];
+
+            try       
+            {              
+                WebResponse wr = WebRequest.Create(url).GetResponse(); 
+                Stream s = wr.GetResponseStream();
+                resposta = wr.ResponseUri.ToString();
+
+                byte[] temp = new byte[1024];       
+                int comprimento = (int)wr.ContentLength;
+
+                MemoryStream ms = new MemoryStream();
+
+                while (true)                
+                {                   
+                    int qtd = s.Read(temp, 0, temp.Length);
+
+                    if (qtd == 0)                        
+                        break;                    
+                    else                       
+                        ms.Write(temp, 0, qtd);
+                }
+
+                bytes = ms.ToArray();
+
+                s.Close();        
+                ms.Close();     
+            }           
+            catch         
+            {           
+                resposta = null;   
+                bytes = new byte[0];
+            }
+
+            return bytes;  
+        }
+
+        public void ExtrairImagens()   
+        {           
+            List<String> nomes = ExtrairNomes();
+
+            foreach (var nome in nomes)   
+            {             
+                byte[] bytes = Baixar(nome);
+                if (bytes != null)        
+                    try                 
+                    {                  
+                        String novoNome = LimparNome(nome);
+                        FileStream fs = new FileStream(novoNome, FileMode.Create);
+                        fs.Write(bytes, 0, bytes.Length);       
+                        fs.Close();                
+                    }                 
+                    catch { }        
+            }      
+        }
+
+        private byte[] Baixar(string nome)  
+        {           
+            String nulo = null;     
+            return Baixar(nome, out nulo);   
+        }
+
+        private String LimparNome(string nome)      
+        {         
+            String[] partes = Uri.UnescapeDataString(nome).Split('/');     
+            return partes[partes.Length - 1];  
+        }  
+    }
+}
+
+
+*****************************************************************************************************************************
+*****************************************************************************************************************************

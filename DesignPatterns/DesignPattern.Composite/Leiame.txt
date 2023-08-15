@@ -1,0 +1,17 @@
+﻿Definição: 
+
+	É um padrão que nos permite tratar de forma igual objetos simples e objetos compostos (formados por outros objetos).
+
+Quando usar: 
+
+	Quando você tem uma estrutura irregular de objetos simples e compostos (pais e filhos, pastas e arquivos, por exemplo); 
+	Quando você quer tratar os objetos simples e os compostos da mesma forma. 
+
+
+Como usar:
+
+	Criar uma classe Component que implemente IComponent; 
+	Criar uma classe Composite que implemente IComponent; 
+	Adicionar um campo privado (list) do tipo coleção de IComponent; 
+	Adicionar um construtor que inicialize a coleção; 
+	Implementar Operation de modo que ele execute Operation de cada elemento de list. 

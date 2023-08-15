@@ -1,0 +1,17 @@
+﻿Definição: 
+
+	É um padrão que permite que duas interfaces não relacionadas trabalhem em conjunto. 
+	O link entre elas é feito pela classe adaptadora.
+
+
+Quando usar: 
+
+	Quando você precisa ter nomes de métodos diferentes (entre os chamados e os executados); 
+	Quando você quer ter diferentes conjuntos de métodos (para propósitos diferentes); 
+	Quando quiser criar classes reusáveis. 
+
+
+Como usar:
+
+	Criar uma classe Adapter que implemente Adaptee e ITarget; 
+	Implementar Request de modo que ele execute SpecificRequest. 

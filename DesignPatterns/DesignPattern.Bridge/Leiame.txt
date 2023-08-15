@@ -1,0 +1,18 @@
+﻿Definição: 
+
+	É um padrão que nos permite separar a implementação da abstração.
+
+Quando usar: 
+
+	Quando queremos ocultar do cliente a implementação; 
+	Quando queremos evitar o vínculo (p.e. herança) entre a abstração e a implementação; 
+	Quando queremos alterar a implementação sem recompilar a abstração. 
+
+
+Como usar:
+
+	Criar as implementações (ImplementationA e ImplementationB) que implementem Bridge; 
+	Criar uma classe Abstraction; 
+	Adicionar um campo privado do tipo Bridge; 
+	Adicionar um construtor que receba um Bridge e o atribua ao campo privado; 
+	Implementar Operation de acordo com a sua necessidade, chamando os métodos OperationImp de ImplementationA ou ImplementationB. 
