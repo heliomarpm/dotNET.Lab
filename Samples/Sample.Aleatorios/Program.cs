@@ -139,6 +139,9 @@ namespace Sample.Aleatorios
 
         static void Main(string[] args)
         {
+
+            Console.WriteLine("Valor {0} {1}", 0);
+
             Abstracao.Run();
 
             MediaNotas2();
